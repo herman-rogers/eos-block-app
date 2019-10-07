@@ -4,7 +4,7 @@
   "description": "Small app to display eos blocks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack-dev-server --config webpack.config.js",
     "lint:fix": "prettier es5 --single-quote --trailing-comma --write '{,!(node_modules|.git)/**/}*.{js,json,md,html}'"
   },
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
@@ -28,6 +29,7 @@
     "eslint": "^6.5.1",
     "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2",
     "prettier": "^1.18.2",
     "style-loader": "^1.0.0",
     "styled-components": "^4.4.0",
@@ -36,11 +38,18 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.6.2",
     "antd": "^3.23.6",
     "eosjs": "^20.0.0",
     "proptypes": "^1.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-hot-loader": "^4.12.14"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./test/setupJest.js"
+    ]
   }
 }
