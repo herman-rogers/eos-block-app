@@ -1,0 +1,44 @@
+{
+  "name": "eos-block-app",
+  "version": "1.0.0",
+  "description": "Small app to display eos blocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config webpack.config.js",
+    "lint:fix": "prettier es5 --single-quote --trailing-comma --write '{,!(node_modules|.git)/**/}*.{js,json,md,html}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herman-rogers/eos-block-app.git"
+  },
+  "author": "Boomer Rogers (github.com/herman-rogers)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/herman-rogers/eos-block-app/issues"
+  },
+  "homepage": "https://github.com/herman-rogers/eos-block-app#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.16.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "style-loader": "^1.0.0",
+    "styled-components": "^4.4.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "proptypes": "^1.1.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-hot-loader": "^4.12.14"
+  }
+}
