@@ -36,6 +36,8 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
+    "antd": "^3.23.6",
+    "eosjs": "^20.0.0",
     "proptypes": "^1.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
