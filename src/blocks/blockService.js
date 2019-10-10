@@ -9,21 +9,37 @@ function getEosService() {
   return service;
 }
 
-function delay(ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
+async function rateLimitBulkRequest(requests) {
+  const bulkRequests = [...requests];
+  let currentReq = requests.length - 1;
+  let prevRequest = null;
+  let responses = [];
+
+  return new Promise(async resolve => {
+    while (bulkRequests.length > 0) {
+      if (currentReq === prevRequest) {
+        return;
+      }
+      prevRequest = currentReq;
+      const res = await bulkRequests[currentReq]();
+
+      responses.push(res);
+      bulkRequests.pop();
+      currentReq = bulkRequests.length - 1;
+    }
+    resolve(responses);
   });
 }
 
-export async function getLatestBlocks() {
+export async function getLatestBlocks(blockCount = 10) {
   const rpc = getEosService();
   const { head_block_num } = await rpc.get_info();
-  const blocks = [];
+  const blockRequests = [];
 
-  for (let i = 0; i < 10; i += 1) {
-    await delay(100);
-    blocks.push(rpc.get_block(head_block_num - 1));
+  for (let i = 0; i < blockCount; i += 1) {
+    blockRequests.push(() => {
+      return rpc.get_block(head_block_num - i);
+    });
   }
-
-  return Promise.all(blocks);
+  return await rateLimitBulkRequest(blockRequests, 100);
 }
