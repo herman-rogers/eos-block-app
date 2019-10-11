@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Button } from 'antd';
 import styled from 'styled-components';
-import 'antd/dist/antd.css';
 import { getLatestBlocks } from './blocks/blockService';
 import BlockTable from './blocks/BlockTable';
+import 'antd/dist/antd.css';
+import './app.css';
 
 const Styles = styled.div`
   .load-button {
