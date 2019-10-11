@@ -32,8 +32,6 @@ class App extends Component {
   getBlocks() {
     this.setState({ loading: true });
     getLatestBlocks().then(blocks => {
-      console.log(blocks);
-
       this.setState({
         loading: false,
         blocks: blocks.reverse(),

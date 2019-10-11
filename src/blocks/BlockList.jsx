@@ -21,15 +21,11 @@ const Styles = styled.div`
 
   .block-item {
     padding: 12px 0;
-    background-color: #ffffff;
+    background-color: #f4f2f7;
     margin: 12px;
     padding: 10px 20px;
     border-radius: 10px;
     color: #737373;
-
-    h4 {
-      color: #1890ff;
-    }
 
     :last-child {
       border: none;
@@ -85,11 +81,12 @@ export default function BlockList({ block }) {
               const id = typeof trx === 'object' ? trx.id : trx;
 
               return (
-                <BlockItem key={id} title={`Transaction ${id}`}>
+                <div>
+                  <h3>Transaction {id}</h3>
                   <BlockItem title="status" data={status} />
                   <BlockItem title="cpu usage" data={cpu_usage_us} />
                   <BlockItem title="net usage" data={net_usage_words} />
-                </BlockItem>
+                </div>
               );
             })}
           </Panel>
