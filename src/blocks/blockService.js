@@ -4,18 +4,18 @@ let service = null;
 
 function getEosService() {
   if (!service) {
-    service = new JsonRpc('https://api.eosnewyork.io', { fetch });
+    service = new JsonRpc(process.env.EOS_API, { fetch });
   }
   return service;
 }
 
 async function rateLimitBulkRequest(requests) {
-  const bulkRequests = [...requests];
-  let currentReq = requests.length - 1;
-  let prevRequest = null;
-  let responses = [];
-
   return new Promise(async resolve => {
+    const bulkRequests = [...requests];
+    let currentReq = requests.length - 1;
+    let prevRequest = null;
+    let responses = [];
+
     while (bulkRequests.length > 0) {
       if (currentReq === prevRequest) {
         return;

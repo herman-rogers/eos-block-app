@@ -33,5 +33,12 @@ module.exports = {
     port: 3000,
     hotOnly: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        EOS_API: JSON.stringify('https://api.eosnewyork.io'),
+      },
+    }),
+  ],
 };
