@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --config webpack.config.js",
-    "lint:fix": "prettier es5 --single-quote --trailing-comma --write '{,!(node_modules|.git)/**/}*.{js,json,md,html}'"
+    "lint:fix": "prettier es5 --single-quote --trailing-comma --write '{,!(node_modules|.git)/**/}*.{js,jsx,json,md,html}'"
   },
   "repository": {
     "type": "git",

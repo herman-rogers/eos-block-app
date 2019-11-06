@@ -9,11 +9,11 @@ function getEosService() {
   return service;
 }
 
-async function rateLimitBulkRequest(requests) {
+export async function rateLimitBulkRequest(requests) {
   return new Promise(async resolve => {
     const bulkRequests = [...requests];
     let currentReq = requests.length - 1;
-    let prevRequest = null;
+    let prevRequest = -9999;
     let responses = [];
 
     while (bulkRequests.length > 0) {
@@ -41,5 +41,5 @@ export async function getLatestBlocks(blockCount = 10) {
       return rpc.get_block(head_block_num - i);
     });
   }
-  return await rateLimitBulkRequest(blockRequests, 100);
+  return await rateLimitBulkRequest(blockRequests);
 }
